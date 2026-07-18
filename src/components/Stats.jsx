@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import GroupsIcon from '@mui/icons-material/Groups';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
@@ -141,34 +141,36 @@ export default function Stats() {
   }, []);
 
   return (
-    <Box ref={containerRef} sx={{ py: { xs: 4, sm: 5 }, backgroundColor: '#FFFFFF' }}>
-      <Container maxWidth="xl">
-        <Box
-          sx={{
-            backgroundColor: '#101B33',
-            color: '#FFFFFF',
-            borderRadius: { xs: '20px', md: '28px' },
-            py: { xs: 3.5, sm: 4.5, md: 5.5 },
-            px: { xs: 3, sm: 4, md: 5 },
-            boxShadow: '0 16px 40px rgba(16, 27, 51, 0.2)',
-          }}
-        >
-          <Grid container spacing={{ xs: 3, sm: 3, md: 0 }} alignItems="center" justifyContent="space-around">
-            {statsData.map((stat, idx) => (
-              <Grid item xs={6} md={3} key={idx}>
-                <CountUpItem
-                  icon={stat.icon}
-                  numericValue={stat.numericValue}
-                  suffix={stat.suffix}
-                  label={stat.label}
-                  hasTriggered={hasTriggered}
-                  isLast={idx === statsData.length - 1}
-                />
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-      </Container>
+    <Box
+      ref={containerRef}
+      sx={{
+        backgroundColor: '#101B33',
+        color: '#FFFFFF',
+        py: { xs: 3, sm: 4, md: 4.5 },
+        px: { xs: 2, sm: 4, md: 6, lg: 10 },
+      }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: { xs: 3, sm: 2 },
+        }}
+      >
+        {statsData.map((stat, idx) => (
+          <CountUpItem
+            key={idx}
+            icon={stat.icon}
+            numericValue={stat.numericValue}
+            suffix={stat.suffix}
+            label={stat.label}
+            hasTriggered={hasTriggered}
+            isLast={idx === statsData.length - 1}
+          />
+        ))}
+      </Box>
     </Box>
   );
 }
