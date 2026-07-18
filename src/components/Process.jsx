@@ -7,36 +7,36 @@ import {
   useTheme,
   useMediaQuery,
 } from '@mui/material';
-import AssignmentIndOutlinedIcon from '@mui/icons-material/AssignmentIndOutlined';
-import QuizOutlinedIcon from '@mui/icons-material/QuizOutlined';
-import PsychologyOutlinedIcon from '@mui/icons-material/PsychologyOutlined';
-import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
-import AnalyticsOutlinedIcon from '@mui/icons-material/AnalyticsOutlined';
+import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
+import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
+import LocalLibraryOutlinedIcon from '@mui/icons-material/LocalLibraryOutlined';
+import CoPresentOutlinedIcon from '@mui/icons-material/CoPresentOutlined';
+import QueryStatsOutlinedIcon from '@mui/icons-material/QueryStatsOutlined';
 import AssessmentOutlinedIcon from '@mui/icons-material/AssessmentOutlined';
 
 const stepsData = [
   {
-    icon: AssignmentIndOutlinedIcon,
+    icon: ArticleOutlinedIcon,
     title: 'Admission',
     desc: 'Understand student needs and goals',
   },
   {
-    icon: QuizOutlinedIcon,
+    icon: FactCheckOutlinedIcon,
     title: 'Assessment',
     desc: 'Evaluate learning levels and skills',
   },
   {
-    icon: PsychologyOutlinedIcon,
+    icon: LocalLibraryOutlinedIcon,
     title: 'Personal Learning Plan',
     desc: 'Customized plan for each student',
   },
   {
-    icon: SchoolOutlinedIcon,
+    icon: CoPresentOutlinedIcon,
     title: 'Regular Classes',
-    desc: 'Concept based Interactive learning',
+    desc: 'Concept based interactive learning',
   },
   {
-    icon: AnalyticsOutlinedIcon,
+    icon: QueryStatsOutlinedIcon,
     title: 'Weekly Review',
     desc: 'Track progress and provide feedback',
   },
@@ -63,7 +63,7 @@ export default function Process() {
       <Container maxWidth="xl">
         {/* Header */}
         <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 6, md: 7 } }}>
-          {/* Green Pill Tag */}
+          {/* Green Subtitle Tag */}
           <Typography
             variant="subtitle2"
             sx={{
@@ -99,13 +99,13 @@ export default function Process() {
             <Box
               sx={{
                 position: 'absolute',
-                top: 32,
-                left: '7%',
-                right: '7%',
+                top: 34,
+                left: '8%',
+                right: '8%',
                 height: 2,
                 borderTop: '2px dashed #1E9457',
                 zIndex: 0,
-                opacity: 0.35,
+                opacity: 0.4,
               }}
             />
           )}
@@ -125,14 +125,15 @@ export default function Process() {
                       zIndex: 1,
                     }}
                   >
-                    {/* Circle Icon Badge */}
+                    {/* Double Ring Circle Icon Badge */}
                     <Box
                       sx={{
-                        width: { xs: 58, sm: 64 },
-                        height: { xs: 58, sm: 64 },
+                        width: { xs: 60, sm: 68 },
+                        height: { xs: 60, sm: 68 },
                         borderRadius: '50%',
                         backgroundColor: '#FFFFFF',
                         border: '2px solid #1E9457',
+                        outline: '4px solid rgba(30, 148, 87, 0.1)',
                         color: '#1E9457',
                         display: 'flex',
                         alignItems: 'center',
@@ -144,17 +145,18 @@ export default function Process() {
                           backgroundColor: '#1E9457',
                           color: '#FFFFFF',
                           transform: 'scale(1.08)',
+                          outline: '6px solid rgba(30, 148, 87, 0.2)',
                         },
                       }}
                     >
-                      <Icon sx={{ fontSize: { xs: 24, sm: 28 } }} />
+                      <Icon sx={{ fontSize: { xs: 26, sm: 30 } }} />
                     </Box>
 
                     {/* Title */}
                     <Typography
                       variant="h6"
                       sx={{
-                        fontSize: { xs: '0.88rem', sm: '0.94rem' },
+                        fontSize: { xs: '0.88rem', sm: '0.95rem' },
                         fontWeight: 800,
                         color: '#101B33',
                         mb: 0.6,

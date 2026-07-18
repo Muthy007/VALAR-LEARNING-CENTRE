@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
-import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
-import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
+import GroupsIcon from '@mui/icons-material/Groups';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
-import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 const statsData = [
   {
-    icon: SchoolOutlinedIcon,
+    icon: GroupsIcon,
     numericValue: 500,
     suffix: '+',
     label: 'Happy Students',
   },
   {
-    icon: MenuBookOutlinedIcon,
+    icon: AutoStoriesIcon,
     numericValue: 15,
     suffix: '+',
     label: 'Courses',
@@ -25,7 +25,7 @@ const statsData = [
     label: 'Experienced Faculty',
   },
   {
-    icon: ThumbUpOutlinedIcon,
+    icon: ThumbUpIcon,
     numericValue: 95,
     suffix: '%',
     label: 'Parent Satisfaction',
@@ -61,41 +61,40 @@ function CountUpItem({ icon: Icon, numericValue, suffix, label, hasTriggered, is
       sx={{
         display: 'flex',
         alignItems: 'center',
-        gap: { xs: 1.5, sm: 2.5 },
+        gap: { xs: 1.5, sm: 2, md: 2.5 },
         justifyContent: { xs: 'flex-start', sm: 'center' },
         borderRight: {
           xs: 'none',
           md: !isLast ? '1px solid rgba(255, 255, 255, 0.15)' : 'none',
         },
-        pr: { md: 2 },
+        pr: { md: 2.5 },
+        pl: { md: 1 },
       }}
     >
+      {/* Large Solid Green Icon */}
       <Box
         sx={{
-          width: { xs: 44, sm: 54 },
-          height: { xs: 44, sm: 54 },
-          borderRadius: '16px',
-          backgroundColor: '#1E9457',
-          color: '#FFFFFF',
+          color: '#1E9457',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0,
-          boxShadow: '0 6px 18px rgba(30, 148, 87, 0.35)',
         }}
       >
-        <Icon sx={{ fontSize: { xs: 24, sm: 30 } }} />
+        <Icon sx={{ fontSize: { xs: 40, sm: 48, md: 54 } }} />
       </Box>
 
+      {/* Number and Label */}
       <Box>
         <Typography
           variant="h3"
           sx={{
             fontFamily: '"Poppins", sans-serif',
-            fontSize: { xs: '1.6rem', sm: '2.1rem', md: '2.4rem' },
+            fontSize: { xs: '1.75rem', sm: '2.3rem', md: '2.7rem' },
             fontWeight: 900,
-            lineHeight: 1.05,
+            lineHeight: 1,
             color: '#FFFFFF',
+            letterSpacing: '-0.02em',
           }}
         >
           {count}
@@ -104,10 +103,11 @@ function CountUpItem({ icon: Icon, numericValue, suffix, label, hasTriggered, is
         <Typography
           variant="body2"
           sx={{
-            fontSize: { xs: '0.78rem', sm: '0.86rem' },
-            color: 'rgba(255, 255, 255, 0.82)',
+            fontSize: { xs: '0.78rem', sm: '0.88rem' },
+            color: 'rgba(255, 255, 255, 0.85)',
             fontWeight: 500,
-            mt: 0.3,
+            mt: 0.4,
+            whiteSpace: 'nowrap',
           }}
         >
           {label}
@@ -128,7 +128,7 @@ export default function Stats() {
           setHasTriggered(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.25 }
     );
 
     if (containerRef.current) {
@@ -143,19 +143,19 @@ export default function Stats() {
   }, []);
 
   return (
-    <Box ref={containerRef} sx={{ py: { xs: 4, sm: 5 }, backgroundColor: '#F8F9FB' }}>
+    <Box ref={containerRef} sx={{ py: { xs: 4, sm: 5 }, backgroundColor: '#FFFFFF' }}>
       <Container maxWidth="xl">
         <Box
           sx={{
             backgroundColor: '#101B33',
             color: '#FFFFFF',
-            borderRadius: { xs: '24px', md: '30px' },
-            py: { xs: 3.5, sm: 4.5, md: 5 },
-            px: { xs: 2.5, sm: 4, md: 6 },
-            boxShadow: '0 16px 40px rgba(16, 27, 51, 0.22)',
+            borderRadius: { xs: '20px', md: '28px' },
+            py: { xs: 3.5, sm: 4.5, md: 5.5 },
+            px: { xs: 3, sm: 4, md: 5 },
+            boxShadow: '0 16px 40px rgba(16, 27, 51, 0.2)',
           }}
         >
-          <Grid container spacing={{ xs: 3, sm: 3, md: 4 }} alignItems="center">
+          <Grid container spacing={{ xs: 3, sm: 3, md: 2 }} alignItems="center">
             {statsData.map((stat, idx) => (
               <Grid item xs={6} md={3} key={idx}>
                 <CountUpItem
