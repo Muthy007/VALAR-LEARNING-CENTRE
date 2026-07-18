@@ -43,7 +43,7 @@ export default function Hero() {
       id="hero"
       sx={{
         backgroundColor: '#FFFFFF',
-        pt: { xs: 3, sm: 5, md: 6 },
+        pt: { xs: 3, sm: 4, md: 5 },
         pb: { xs: 5, sm: 7, md: 8 },
         position: 'relative',
         overflow: 'hidden',
@@ -207,54 +207,45 @@ export default function Hero() {
             </Box>
           </Grid>
 
-          {/* Right Column: Arch Cutout Image & Dark Navy Banner */}
+          {/* Right Column: Full Right Light Gray Arc Container + Kids Photo + Dark Navy Banner */}
           <Grid item xs={12} md={6}>
             <Box
               sx={{
                 position: 'relative',
                 width: '100%',
+                height: { xs: 360, sm: 480, md: 520 },
                 display: 'flex',
+                alignItems: 'center',
                 justifyContent: 'flex-end',
-                alignItems: 'flex-start',
-                minHeight: { xs: 340, sm: 460, md: 520 },
               }}
             >
-              {/* Soft Light Gray-Blue Curved Outline SVG behind image */}
+              {/* Light Gray Sweeping Arc Background Container */}
               <Box
                 sx={{
                   position: 'absolute',
-                  top: '-4%',
-                  left: { xs: '-2%', sm: '4%', md: '-2%' },
-                  width: '102%',
-                  height: '108%',
+                  top: 0,
+                  right: 0,
+                  width: '100%',
+                  height: '100%',
+                  backgroundColor: '#EEF3F8',
+                  borderRadius: { xs: '30px', md: '280px 0 0 280px / 360px 0 0 360px' },
+                  borderLeft: '10px solid #FFFFFF',
                   zIndex: 0,
-                  pointerEvents: 'none',
                 }}
-              >
-                <svg width="100%" height="100%" viewBox="0 0 500 500" preserveAspectRatio="none" fill="none">
-                  <path
-                    d="M 180,0 C 40,150 40,350 180,500 L 500,500 L 500,0 Z"
-                    fill="none"
-                    stroke="#E2E8F0"
-                    strokeWidth="12"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </Box>
+              />
 
-              {/* Kids Image with Arch Mask */}
+              {/* Kids Photo sitting inside the light gray arc container extending 100% right */}
               <Box
                 component="img"
                 src={heroKidsExactImg}
                 alt="Happy Indian children studying together at Valar Learning Centre"
                 sx={{
-                  width: '96%',
-                  height: { xs: 320, sm: 440, md: 490 },
-                  objectFit: 'cover',
-                  borderRadius: { xs: '30px', md: '160px 0 0 160px / 240px 0 0 240px' },
                   position: 'relative',
                   zIndex: 1,
-                  boxShadow: '-10px 15px 40px rgba(16, 27, 51, 0.12)',
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  borderRadius: { xs: '24px', md: '280px 0 0 280px / 360px 0 0 360px' },
                 }}
               />
 
@@ -262,19 +253,19 @@ export default function Hero() {
               <Box
                 sx={{
                   position: 'absolute',
-                  bottom: -10,
-                  right: -10,
-                  width: { xs: '90%', sm: '80%', md: '75%' },
+                  bottom: 0,
+                  right: 0,
+                  width: { xs: '92%', sm: '85%', md: '80%' },
                   backgroundColor: '#101B33',
                   color: '#FFFFFF',
                   borderRadius: '50px 0 0 0',
-                  py: { xs: 2, sm: 2.5 },
+                  py: { xs: 2, sm: 2.6 },
                   px: { xs: 3, sm: 4 },
                   zIndex: 2,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  boxShadow: '-6px -6px 25px rgba(16, 27, 51, 0.25)',
+                  boxShadow: '-8px -8px 25px rgba(16, 27, 51, 0.2)',
                 }}
               >
                 {/* Left Text */}
@@ -283,40 +274,41 @@ export default function Hero() {
                   sx={{
                     fontFamily: '"Poppins", sans-serif',
                     fontWeight: 700,
-                    fontSize: { xs: '0.85rem', sm: '0.98rem', md: '1.05rem' },
+                    fontSize: { xs: '0.88rem', sm: '1.02rem', md: '1.08rem' },
                     lineHeight: 1.3,
                     color: '#FFFFFF',
-                    maxWidth: 240,
+                    maxWidth: 260,
                   }}
                 >
                   Shaping Today's Learners Into Tomorrow's Leaders
                 </Typography>
 
                 {/* Right Paper Airplane & Doodles SVG */}
-                <Box sx={{ width: 64, height: 48, flexShrink: 0 }}>
-                  <svg width="64" height="48" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <Box sx={{ width: 68, height: 50, flexShrink: 0 }}>
+                  <svg width="68" height="50" viewBox="0 0 68 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                     {/* Flying Paper Plane */}
                     <path
-                      d="M56 8L20 26L32 30L56 8Z"
+                      d="M60 8L22 28L35 32L60 8Z"
                       fill="#FFFFFF"
-                      fillOpacity="0.9"
+                      fillOpacity="0.95"
                     />
                     <path
-                      d="M56 8L32 30V40L38 32.5L56 8Z"
-                      fill="#E2E8F0"
+                      d="M60 8L35 32V42L41 34.5L60 8Z"
+                      fill="#CBD5E1"
                     />
                     {/* Dotted Trail */}
                     <path
-                      d="M6 38C12 36 18 32 24 28"
+                      d="M8 40C14 38 20 34 26 30"
                       stroke="#FFFFFF"
                       strokeWidth="2"
                       strokeDasharray="3 3"
                       strokeLinecap="round"
                     />
-                    {/* Little Planet & Star Doodles */}
-                    <circle cx="50" cy="38" r="4" stroke="#FFFFFF" strokeWidth="1.5" />
-                    <ellipse cx="50" cy="38" rx="7" ry="2" stroke="#FFFFFF" strokeWidth="1" transform="rotate(-20 50 38)" />
-                    <path d="M12 12L14 16L18 18L14 20L12 24L10 20L6 18L10 16L12 12Z" fill="#FFFFFF" fillOpacity="0.6" />
+                    {/* Planet Ring Doodle */}
+                    <circle cx="54" cy="40" r="4.5" stroke="#FFFFFF" strokeWidth="1.5" />
+                    <ellipse cx="54" cy="40" rx="8" ry="2.5" stroke="#FFFFFF" strokeWidth="1.2" transform="rotate(-20 54 40)" />
+                    {/* Star Sparkle */}
+                    <path d="M14 12L16.5 16.5L21 19L16.5 21.5L14 26L11.5 21.5L7 19L11.5 16.5L14 12Z" fill="#FFFFFF" fillOpacity="0.7" />
                   </svg>
                 </Box>
               </Box>
