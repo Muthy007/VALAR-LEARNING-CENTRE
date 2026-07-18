@@ -3,63 +3,56 @@ import {
   Box,
   Container,
   Typography,
-  Grid,
   Card,
   CardContent,
-  Chip,
   Button,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
 } from '@mui/material';
-import SchoolIcon from '@mui/icons-material/School';
-import CalculateIcon from '@mui/icons-material/Calculate';
-import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
-import CreateIcon from '@mui/icons-material/Create';
-import PaletteIcon from '@mui/icons-material/Palette';
-import SelfImprovementIcon from '@mui/icons-material/SelfImprovement';
-import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
+import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
+import SpellcheckOutlinedIcon from '@mui/icons-material/SpellcheckOutlined';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import PaletteOutlinedIcon from '@mui/icons-material/PaletteOutlined';
+import SelfImprovementOutlinedIcon from '@mui/icons-material/SelfImprovementOutlined';
 
 const coursesData = [
   {
     id: 'tuition',
-    icon: SchoolIcon,
+    icon: SchoolOutlinedIcon,
     title: 'TUITION',
     subtitle: 'LKG to XII (All Subjects)',
     points: ['Concept Clarity', 'Homework Support', 'Exam Preparation'],
   },
   {
     id: 'abacus',
-    icon: CalculateIcon,
+    icon: CalculateOutlinedIcon,
     title: 'ABACUS',
     subtitle: 'Mental Maths & Concentration',
     points: ['Mental Maths', 'Faster Calculation', 'Improve Concentration', 'Memory Power'],
   },
   {
     id: 'phonics',
-    icon: RecordVoiceOverIcon,
+    icon: SpellcheckOutlinedIcon,
     title: 'PHONICS',
     subtitle: 'ENGLISH & TAMIL',
     points: ['Reading Skills', 'Pronunciation', 'Vocabulary', 'Confidence Building'],
   },
   {
     id: 'handwriting',
-    icon: CreateIcon,
+    icon: EditOutlinedIcon,
     title: 'HAND WRITING',
     subtitle: 'Cursive & Print Speed',
     points: ['Neat Writing', 'Better Speed', 'Good Presentation', 'Builds Confidence'],
   },
   {
     id: 'drawing',
-    icon: PaletteIcon,
+    icon: PaletteOutlinedIcon,
     title: 'DRAWING CLASSES',
     subtitle: 'In Association With Zenarts Academy',
     points: ['Enhance Creativity', 'Fine Motor Skills', 'Colour Sense', 'Imagination'],
   },
   {
     id: 'yoga',
-    icon: SelfImprovementIcon,
+    icon: SelfImprovementOutlinedIcon,
     title: 'YOGA',
     subtitle: '(FOR WOMEN ONLY)',
     points: ['Health & Wellness', 'Flexibility', 'Stress Relief', 'Inner Peace'],
@@ -87,175 +80,220 @@ export default function Courses() {
       id="courses"
       sx={{
         backgroundColor: '#FFFFFF',
-        py: { xs: 6, sm: 8, md: 10 },
+        py: { xs: 5, sm: 7, md: 9 },
         position: 'relative',
       }}
     >
       <Container maxWidth="xl">
-        {/* Header */}
-        <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 6 } }}>
-          <Chip
-            label="OUR COURSES"
+        {/* Header Title & Subtitle */}
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 5, md: 6 } }}>
+          {/* Green Pill Tag */}
+          <Typography
+            variant="subtitle2"
             sx={{
-              backgroundColor: 'rgba(30, 148, 87, 0.12)',
               color: '#1E9457',
               fontWeight: 800,
-              fontSize: { xs: '0.72rem', sm: '0.82rem' },
-              px: 1.2,
-              py: 1.2,
-              mb: 1.5,
+              fontSize: { xs: '0.75rem', sm: '0.82rem' },
               letterSpacing: '0.08em',
-              borderRadius: '12px',
+              textTransform: 'uppercase',
+              mb: 1,
             }}
-          />
+          >
+            OUR COURSES
+          </Typography>
+
           <Typography
             variant="h2"
             sx={{
+              fontFamily: '"Poppins", sans-serif',
               color: '#101B33',
-              fontSize: { xs: '1.8rem', sm: '2.5rem', md: '2.8rem' },
+              fontSize: { xs: '1.65rem', sm: '2.3rem', md: '2.7rem' },
               fontWeight: 800,
               mb: 1,
             }}
           >
             Explore. Learn. Excel.
           </Typography>
+
           <Typography
             variant="body1"
             sx={{
               color: '#4A5568',
               maxWidth: '640px',
               mx: 'auto',
-              fontSize: { xs: '0.95rem', sm: '1.05rem' },
+              fontSize: { xs: '0.88rem', sm: '0.98rem' },
             }}
           >
             A wide range of programs designed to bring out the best in every student.
           </Typography>
         </Box>
 
-        {/* 6 Cards Grid */}
-        <Grid container spacing={{ xs: 2.5, sm: 3, md: 3.5 }}>
+        {/* 6 Cards Grid: 2 columns on Mobile (xs), 3 columns on Tablet (sm), 6 columns on Desktop (lg) */}
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: {
+              xs: 'repeat(2, 1fr)',
+              sm: 'repeat(3, 1fr)',
+              lg: 'repeat(6, 1fr)',
+            },
+            gap: { xs: 1.5, sm: 2, lg: 2.2 },
+          }}
+        >
           {coursesData.map((course) => {
             const Icon = course.icon;
             return (
-              <Grid item xs={12} sm={6} md={4} key={course.id}>
-                <Card
-                  elevation={0}
+              <Card
+                key={course.id}
+                elevation={0}
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #E8EEF5',
+                  borderRadius: '20px',
+                  p: 0,
+                  boxShadow: '0 4px 18px rgba(16, 27, 51, 0.03)',
+                  transition: 'all 0.3s ease-in-out',
+                  '&:hover': {
+                    borderColor: '#1E9457',
+                    transform: 'translateY(-4px)',
+                    boxShadow: '0 12px 30px rgba(30, 148, 87, 0.1)',
+                  },
+                }}
+              >
+                <CardContent
                   sx={{
-                    height: '100%',
+                    p: { xs: 1.8, sm: 2.2, lg: 2 },
+                    '&:last-child': { pb: { xs: 1.8, sm: 2.2, lg: 2 } },
                     display: 'flex',
                     flexDirection: 'column',
-                    backgroundColor: '#FFFFFF',
-                    border: '1px solid rgba(16, 27, 51, 0.08)',
-                    borderRadius: '20px',
-                    transition: 'all 0.3s ease-in-out',
-                    '&:hover': {
-                      borderColor: '#1E9457',
-                      transform: 'translateY(-6px)',
-                      boxShadow: '0 14px 35px rgba(30, 148, 87, 0.12)',
-                    },
+                    height: '100%',
+                    textAlign: 'center',
+                    alignItems: 'center',
                   }}
                 >
-                  <CardContent
+                  {/* Top Line Icon */}
+                  <Box
                     sx={{
-                      p: { xs: 2.5, sm: 3 },
+                      width: { xs: 44, sm: 52 },
+                      height: { xs: 44, sm: 52 },
+                      borderRadius: '14px',
+                      backgroundColor: 'rgba(30, 148, 87, 0.08)',
+                      color: '#1E9457',
                       display: 'flex',
-                      flexDirection: 'column',
-                      height: '100%',
-                      textAlign: 'center',
                       alignItems: 'center',
+                      justifyContent: 'center',
+                      mb: 1.5,
                     }}
                   >
-                    {/* Icon Box */}
-                    <Box
-                      sx={{
-                        width: 54,
-                        height: 54,
-                        borderRadius: '14px',
-                        backgroundColor: 'rgba(30, 148, 87, 0.1)',
-                        color: '#1E9457',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mb: 2,
-                      }}
-                    >
-                      <Icon sx={{ fontSize: 30 }} />
-                    </Box>
+                    <Icon sx={{ fontSize: { xs: 26, sm: 30 } }} />
+                  </Box>
 
-                    {/* Title & Subtitle */}
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        fontSize: '1.15rem',
-                        fontWeight: 800,
-                        color: '#101B33',
-                        mb: 0.5,
-                        letterSpacing: '0.02em',
-                      }}
-                    >
-                      {course.title}
-                    </Typography>
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        color: '#1E9457',
-                        fontWeight: 700,
-                        fontSize: '0.78rem',
-                        mb: 2,
-                        display: 'block',
-                      }}
-                    >
-                      {course.subtitle}
-                    </Typography>
+                  {/* Course Title */}
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontSize: { xs: '0.88rem', sm: '1rem', lg: '0.95rem' },
+                      fontWeight: 800,
+                      color: '#101B33',
+                      mb: 0.4,
+                      letterSpacing: '0.01em',
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {course.title}
+                  </Typography>
 
-                    {/* Bullet Points */}
-                    <List disablePadding sx={{ width: '100%', mb: 3, textAlign: 'left' }}>
-                      {course.points.map((pt, idx) => (
-                        <ListItem key={idx} disableGutters sx={{ py: 0.3, px: 0.5 }}>
-                          <ListItemIcon sx={{ minWidth: 24, color: '#1E9457' }}>
-                            <CheckCircleOutlinedIcon sx={{ fontSize: 16 }} />
-                          </ListItemIcon>
-                          <ListItemText
-                            primary={pt}
-                            primaryTypographyProps={{
-                              fontSize: '0.84rem',
-                              color: '#4A5568',
-                              fontWeight: 500,
-                            }}
-                          />
-                        </ListItem>
-                      ))}
-                    </List>
+                  {/* Course Subtitle */}
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      color: '#1E9457',
+                      fontWeight: 700,
+                      fontSize: { xs: '0.68rem', sm: '0.72rem' },
+                      mb: 1.8,
+                      display: 'block',
+                      minHeight: { xs: 28, sm: 32 },
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {course.subtitle}
+                  </Typography>
 
-                    {/* Know More Outlined Button */}
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                      onClick={() => handleKnowMore(course.title)}
-                      sx={{
-                        mt: 'auto',
-                        width: '80%',
-                        borderRadius: '20px',
-                        py: 0.8,
-                        fontSize: '0.84rem',
-                        fontWeight: 700,
-                        borderColor: 'rgba(16, 27, 51, 0.25)',
-                        color: '#101B33',
-                        '&:hover': {
-                          borderColor: '#1E9457',
-                          backgroundColor: '#1E9457',
-                          color: '#FFFFFF',
-                        },
-                      }}
-                    >
-                      Know More
-                    </Button>
-                  </CardContent>
-                </Card>
-              </Grid>
+                  {/* Bullet Points */}
+                  <Box
+                    component="ul"
+                    sx={{
+                      width: '100%',
+                      p: 0,
+                      m: 0,
+                      mb: 2.5,
+                      listStyleType: 'none',
+                      textAlign: 'left',
+                      flexGrow: 1,
+                    }}
+                  >
+                    {course.points.map((pt, idx) => (
+                      <Box
+                        component="li"
+                        key={idx}
+                        sx={{
+                          fontSize: { xs: '0.72rem', sm: '0.78rem' },
+                          color: '#4A5568',
+                          fontWeight: 500,
+                          py: 0.3,
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: 0.8,
+                        }}
+                      >
+                        <Box
+                          component="span"
+                          sx={{
+                            color: '#1E9457',
+                            fontWeight: 800,
+                            fontSize: '0.75rem',
+                            lineHeight: 1,
+                            mt: '2px',
+                          }}
+                        >
+                          •
+                        </Box>
+                        <span>{pt}</span>
+                      </Box>
+                    ))}
+                  </Box>
+
+                  {/* Know More Button */}
+                  <Button
+                    variant="outlined"
+                    onClick={() => handleKnowMore(course.title)}
+                    sx={{
+                      mt: 'auto',
+                      width: '100%',
+                      borderRadius: '10px',
+                      py: { xs: 0.5, sm: 0.7 },
+                      fontSize: { xs: '0.72rem', sm: '0.78rem' },
+                      fontWeight: 700,
+                      borderColor: '#1E9457',
+                      color: '#1E9457',
+                      textTransform: 'none',
+                      '&:hover': {
+                        borderColor: '#1E9457',
+                        backgroundColor: '#1E9457',
+                        color: '#FFFFFF',
+                      },
+                    }}
+                  >
+                    Know More
+                  </Button>
+                </CardContent>
+              </Card>
             );
           })}
-        </Grid>
+        </Box>
       </Container>
     </Box>
   );
