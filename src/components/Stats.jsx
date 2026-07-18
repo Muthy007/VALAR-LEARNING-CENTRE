@@ -62,13 +62,11 @@ function CountUpItem({ icon: Icon, numericValue, suffix, label, hasTriggered, is
         display: 'flex',
         alignItems: 'center',
         gap: { xs: 1.5, sm: 2, md: 2.5 },
-        justifyContent: { xs: 'flex-start', sm: 'center' },
+        justifyContent: 'center',
         borderRight: {
           xs: 'none',
           md: !isLast ? '1px solid rgba(255, 255, 255, 0.15)' : 'none',
         },
-        pr: { md: 2.5 },
-        pl: { md: 1 },
       }}
     >
       {/* Large Solid Green Icon */}
@@ -155,7 +153,7 @@ export default function Stats() {
             boxShadow: '0 16px 40px rgba(16, 27, 51, 0.2)',
           }}
         >
-          <Grid container spacing={{ xs: 3, sm: 3, md: 2 }} alignItems="center">
+          <Grid container spacing={{ xs: 3, sm: 3, md: 0 }} alignItems="center" justifyContent="space-around">
             {statsData.map((stat, idx) => (
               <Grid item xs={6} md={3} key={idx}>
                 <CountUpItem
