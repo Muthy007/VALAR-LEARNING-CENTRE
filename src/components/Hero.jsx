@@ -1,18 +1,42 @@
 import React from 'react';
-import { Box, Container, Typography, Button, Chip, Stack } from '@mui/material';
-import PhoneIcon from '@mui/icons-material/Phone';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import VerifiedIcon from '@mui/icons-material/Verified';
-import StarIcon from '@mui/icons-material/Star';
+import {
+  Box,
+  Container,
+  Typography,
+  Button,
+  Grid,
+  Paper,
+} from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import SchoolIcon from '@mui/icons-material/School';
+import PeopleIcon from '@mui/icons-material/People';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
+
+import heroKidsImg from '../assets/hero_kids.png';
+
+const heroFeatures = [
+  { icon: SchoolIcon, label: 'Experienced Faculty' },
+  { icon: PeopleIcon, label: 'Personal Attention' },
+  { icon: LightbulbIcon, label: 'Activity Based Learning' },
+  { icon: AccountBalanceWalletIcon, label: 'Affordable Fees' },
+];
 
 export default function Hero() {
-  const handleScrollToPrograms = () => {
-    const element = document.querySelector('#programs');
+  const handleScrollTo = (href) => {
+    const element = document.querySelector(href);
     if (element) {
+      const header = document.getElementById('main-header');
+      const headerOffset = header ? header.offsetHeight : 80;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -20,205 +44,250 @@ export default function Hero() {
     <Box
       id="hero"
       sx={{
-        backgroundColor: '#101B33', // Deep Navy
-        color: '#FFFFFF',
+        backgroundColor: '#FFFFFF',
+        pt: { xs: 4, sm: 6, md: 8 },
+        pb: { xs: 6, sm: 8, md: 10 },
         position: 'relative',
         overflow: 'hidden',
-        pt: { xs: 5, sm: 8, md: 10, lg: 12 },
-        pb: { xs: 7, sm: 9, md: 11, lg: 13 },
-        textAlign: 'center',
-        /* Geometric Diagonal Wedge & Background Glows */
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          width: { xs: '260px', sm: '420px', md: '560px' },
-          height: { xs: '260px', sm: '420px', md: '560px' },
-          background: 'linear-gradient(135deg, #1E9457 0%, #14673B 100%)',
-          clipPath: 'polygon(100% 0, 0 0, 100% 100%)',
-          zIndex: 1,
-          opacity: 0.9,
-        },
-        '&::after': {
-          content: '""',
-          position: 'absolute',
-          bottom: '-80px',
-          left: '-80px',
-          width: { xs: '260px', sm: '400px' },
-          height: { xs: '260px', sm: '400px' },
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(30, 148, 87, 0.25) 0%, rgba(16, 27, 51, 0) 75%)',
-          zIndex: 1,
-        },
       }}
     >
-      <Container maxWidth="md" sx={{ position: 'relative', zIndex: 2, px: { xs: 2.5, sm: 3 } }}>
-        <Box sx={{ mx: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          {/* Top Motto Badges */}
-          <Stack
-            direction="row"
-            spacing={1.5}
-            alignItems="center"
-            justifyContent="center"
-            flexWrap="wrap"
-            sx={{ mb: 3, gap: 1 }}
-          >
-            <Chip
-              icon={<AutoAwesomeIcon sx={{ color: '#1E9457 !important', fontSize: '0.95rem' }} />}
-              label="IMAGINE • LEARN • SOAR"
-              sx={{
-                backgroundColor: '#FFFFFF',
-                color: '#101B33',
-                fontWeight: 800,
-                fontSize: { xs: '0.75rem', sm: '0.85rem' },
-                px: 1.2,
-                py: 2,
-                boxShadow: '0 4px 18px rgba(0,0,0,0.25)',
-                letterSpacing: '0.06em',
-                borderRadius: '30px',
-              }}
-            />
-
-            <Chip
-              icon={<StarIcon sx={{ color: '#F59E0B !important', fontSize: '0.95rem' }} />}
-              label="Ages 3 - 15 Yrs"
-              sx={{
-                backgroundColor: 'rgba(255, 255, 255, 0.12)',
-                color: '#FFFFFF',
-                backdropFilter: 'blur(8px)',
-                fontWeight: 700,
-                fontSize: { xs: '0.75rem', sm: '0.82rem' },
-                px: 1,
-                py: 2,
-                borderRadius: '30px',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-              }}
-            />
-          </Stack>
-
-          {/* Main Headline */}
-          <Typography
-            variant="h1"
-            component="h1"
-            sx={{
-              fontSize: { xs: '2.1rem', sm: '3.2rem', md: '4rem', lg: '4.5rem' },
-              lineHeight: { xs: 1.15, sm: 1.1 },
-              mb: 2.5,
-              fontWeight: 800,
-              color: '#FFFFFF',
-              letterSpacing: '-0.02em',
-            }}
-          >
-            Nurturing Minds,{<br />}
-            <Box
-              component="span"
-              sx={{
-                color: '#4CD98B',
-                background: 'linear-gradient(90deg, #4CD98B 0%, #1E9457 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                display: 'inline-block',
-              }}
-            >
-              Building Futures.
-            </Box>
-          </Typography>
-
-          {/* Subtext */}
-          <Typography
-            variant="body1"
-            sx={{
-              color: 'rgba(255, 255, 255, 0.88)',
-              fontSize: { xs: '0.95rem', sm: '1.15rem' },
-              lineHeight: 1.6,
-              mb: 3.5,
-              maxWidth: '680px',
-              mx: 'auto',
-            }}
-          >
-            Poonamallee’s premier learning centre for kids. We offer interactive tuitions, drawing (Zenarts Academy), phonics, abacus, handwriting, and yoga in a warm, activity-driven environment.
-          </Typography>
-
-          {/* Key Quick Bullet Points */}
-          <Stack direction="row" flexWrap="wrap" justifyContent="center" gap={1.2} sx={{ mb: 4 }}>
-            {[
-              'Concept Clarity',
-              'Small Batches',
-              'Expert Guidance',
-            ].map((item, idx) => (
-              <Box
-                key={idx}
+      <Container maxWidth="xl">
+        <Grid container spacing={{ xs: 4, md: 6, lg: 8 }} alignItems="center">
+          {/* Left Text Content */}
+          <Grid item xs={12} md={6}>
+            <Box sx={{ maxWidth: { md: 580, lg: 640 } }}>
+              <Typography
+                variant="h1"
                 sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 0.8,
-                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                  px: 2,
-                  py: 0.8,
-                  borderRadius: '20px',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  fontSize: { xs: '2.1rem', sm: '3rem', md: '3.4rem', lg: '4rem' },
+                  fontWeight: 900,
+                  lineHeight: 1.1,
+                  letterSpacing: '-0.02em',
+                  mb: 1.5,
                 }}
               >
-                <VerifiedIcon sx={{ color: '#4CD98B', fontSize: 18 }} />
-                <Typography variant="body2" sx={{ fontWeight: 600, color: '#FFFFFF', fontSize: '0.85rem' }}>
-                  {item}
-                </Typography>
-              </Box>
-            ))}
-          </Stack>
+                <Box component="span" sx={{ color: '#101B33', display: 'block' }}>
+                  NURTURING MINDS,
+                </Box>
+                <Box component="span" sx={{ color: '#1E9457', display: 'block' }}>
+                  BUILDING FUTURES.
+                </Box>
+              </Typography>
 
-          {/* Call to Action Buttons */}
-          <Stack
-            direction={{ xs: 'column', sm: 'row' }}
-            spacing={{ xs: 2, sm: 2.5 }}
-            justifyContent="center"
-            sx={{ width: { xs: '100%', sm: 'auto' } }}
-          >
-            <Button
-              variant="contained"
-              color="secondary"
-              size="large"
-              startIcon={<PhoneIcon />}
-              component="a"
-              href="tel:+919150281166"
+              <Typography
+                variant="h5"
+                sx={{
+                  color: '#101B33',
+                  fontWeight: 700,
+                  fontSize: { xs: '1.15rem', sm: '1.4rem', md: '1.5rem' },
+                  mb: 2,
+                }}
+              >
+                Where Learning Meets Confidence.
+              </Typography>
+
+              <Typography
+                variant="body1"
+                sx={{
+                  color: '#4A5568',
+                  fontSize: { xs: '0.95rem', sm: '1.05rem' },
+                  lineHeight: 1.65,
+                  mb: 4,
+                }}
+              >
+                At VALAR Learning Centre, we inspire young minds with concept-based learning,
+                personal attention and holistic development to help every child shine.
+              </Typography>
+
+              {/* Action Buttons */}
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: 2,
+                  mb: 5,
+                }}
+              >
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  endIcon={<ArrowForwardIcon />}
+                  onClick={() => handleScrollTo('#courses')}
+                  sx={{
+                    borderRadius: '30px',
+                    px: 3.5,
+                    py: 1.5,
+                    fontWeight: 700,
+                    fontSize: '1rem',
+                    boxShadow: '0 8px 25px rgba(16, 27, 51, 0.25)',
+                  }}
+                >
+                  Explore Courses
+                </Button>
+
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  size="large"
+                  startIcon={<CalendarMonthIcon sx={{ color: '#1E9457' }} />}
+                  onClick={() => handleScrollTo('#admissions')}
+                  sx={{
+                    borderRadius: '30px',
+                    px: 3.2,
+                    py: 1.5,
+                    fontWeight: 700,
+                    fontSize: '1rem',
+                    borderColor: 'rgba(16, 27, 51, 0.3)',
+                    color: '#101B33',
+                    '&:hover': {
+                      borderColor: '#101B33',
+                      backgroundColor: 'rgba(16, 27, 51, 0.04)',
+                    },
+                  }}
+                >
+                  Book Free Demo Class
+                </Button>
+              </Box>
+
+              {/* 4 Feature Items with Icons */}
+              <Grid container spacing={2}>
+                {heroFeatures.map((feat, index) => {
+                  const Icon = feat.icon;
+                  return (
+                    <Grid item xs={6} sm={3} key={index}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 1.2,
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            width: 36,
+                            height: 36,
+                            borderRadius: '10px',
+                            backgroundColor: 'rgba(30, 148, 87, 0.12)',
+                            color: '#1E9457',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0,
+                          }}
+                        >
+                          <Icon sx={{ fontSize: 20 }} />
+                        </Box>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            fontWeight: 700,
+                            color: '#101B33',
+                            fontSize: '0.82rem',
+                            lineHeight: 1.25,
+                          }}
+                        >
+                          {feat.label}
+                        </Typography>
+                      </Box>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            </Box>
+          </Grid>
+
+          {/* Right Image with Curved Navy Background and Floating Card */}
+          <Grid item xs={12} md={6}>
+            <Box
               sx={{
-                py: { xs: 1.6, sm: 1.8 },
-                px: { xs: 3, sm: 4 },
-                fontSize: '1.05rem',
-                fontWeight: 800,
-                width: { xs: '100%', sm: 'auto' },
-                boxShadow: '0 8px 25px rgba(30, 148, 87, 0.45)',
+                position: 'relative',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
               }}
             >
-              Call +91 91502 81166
-            </Button>
-            <Button
-              variant="outlined"
-              size="large"
-              endIcon={<ArrowForwardIcon />}
-              onClick={handleScrollToPrograms}
-              sx={{
-                py: { xs: 1.6, sm: 1.8 },
-                px: { xs: 3, sm: 3.8 },
-                fontSize: '1.05rem',
-                fontWeight: 700,
-                color: '#FFFFFF',
-                width: { xs: '100%', sm: 'auto' },
-                borderColor: 'rgba(255, 255, 255, 0.4)',
-                borderWidth: 2,
-                borderRadius: '30px',
-                '&:hover': {
-                  borderColor: '#4CD98B',
-                  backgroundColor: 'rgba(30, 148, 87, 0.2)',
-                  borderWidth: 2,
-                },
-              }}
-            >
-              Explore Programs
-            </Button>
-          </Stack>
-        </Box>
+              {/* Dark Navy Arch/Curved Shape behind the photo */}
+              <Box
+                sx={{
+                  position: 'absolute',
+                  top: '-5%',
+                  right: '-5%',
+                  width: '95%',
+                  height: '110%',
+                  backgroundColor: '#101B33',
+                  borderRadius: { xs: '40px 140px 40px 40px', md: '50px 180px 50px 50px' },
+                  zIndex: 0,
+                }}
+              />
+
+              {/* Main Photo */}
+              <Box
+                component="img"
+                src={heroKidsImg}
+                alt="Happy students studying at Valar Learning Centre"
+                sx={{
+                  width: '94%',
+                  maxHeight: { xs: 340, sm: 480, md: 540 },
+                  objectFit: 'cover',
+                  borderRadius: { xs: '30px 120px 30px 30px', md: '40px 160px 40px 40px' },
+                  boxShadow: '0 20px 50px rgba(16, 27, 51, 0.25)',
+                  position: 'relative',
+                  zIndex: 1,
+                }}
+              />
+
+              {/* Floating White Card */}
+              <Paper
+                elevation={6}
+                sx={{
+                  position: 'absolute',
+                  bottom: { xs: -15, sm: -20 },
+                  right: { xs: 5, sm: 20 },
+                  zIndex: 2,
+                  backgroundColor: '#101B33',
+                  color: '#FFFFFF',
+                  py: 1.5,
+                  px: 2.5,
+                  borderRadius: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1.5,
+                  maxWidth: { xs: 260, sm: 320 },
+                  boxShadow: '0 12px 30px rgba(16, 27, 51, 0.4)',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontWeight: 700,
+                    fontSize: { xs: '0.78rem', sm: '0.88rem' },
+                    lineHeight: 1.3,
+                    color: '#FFFFFF',
+                  }}
+                >
+                  Shaping Today's Learners Into Tomorrow's Leaders
+                </Typography>
+                <Box
+                  sx={{
+                    width: 32,
+                    height: 32,
+                    borderRadius: '50%',
+                    backgroundColor: '#1E9457',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                  }}
+                >
+                  <FlightTakeoffIcon sx={{ fontSize: 18, color: '#FFFFFF' }} />
+                </Box>
+              </Paper>
+            </Box>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );
