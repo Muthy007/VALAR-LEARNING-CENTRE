@@ -2,10 +2,8 @@ import React from 'react';
 import {
   Box,
   Container,
-  Grid,
   Typography,
   Button,
-  Chip,
 } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
@@ -31,7 +29,7 @@ export default function CTABanner() {
     <Box
       id="admissions"
       sx={{
-        py: { xs: 5, sm: 7 },
+        py: { xs: 4, sm: 5 },
         backgroundColor: '#FFFFFF',
       }}
     >
@@ -40,109 +38,121 @@ export default function CTABanner() {
           sx={{
             backgroundColor: '#1E9457',
             color: '#FFFFFF',
-            borderRadius: { xs: '24px', md: '36px' },
-            py: { xs: 4, sm: 5, md: 6 },
-            px: { xs: 3, sm: 5, md: 8 },
+            borderRadius: { xs: '20px', md: '28px' },
             position: 'relative',
             overflow: 'hidden',
-            boxShadow: '0 16px 45px rgba(30, 148, 87, 0.3)',
+            boxShadow: '0 12px 35px rgba(30, 148, 87, 0.25)',
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: { xs: 'column', md: 'row' },
+            minHeight: { md: 180 },
           }}
         >
-          <Grid container spacing={4} alignItems="center">
-            {/* Left Content */}
-            <Grid item xs={12} md={8}>
-              <Box sx={{ maxWidth: 620 }}>
-                <Chip
-                  label="ADMISSIONS OPEN"
-                  sx={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                    color: '#FFFFFF',
-                    fontWeight: 800,
-                    fontSize: { xs: '0.7rem', sm: '0.8rem' },
-                    px: 1.2,
-                    py: 1,
-                    mb: 2,
-                    letterSpacing: '0.1em',
-                    borderRadius: '10px',
-                  }}
-                />
+          {/* Left Text Content */}
+          <Box
+            sx={{
+              flex: 1,
+              py: { xs: 3.5, md: 4 },
+              px: { xs: 3, sm: 4, md: 6 },
+              zIndex: 2,
+            }}
+          >
+            {/* ADMISSIONS OPEN Badge */}
+            <Typography
+              variant="h6"
+              sx={{
+                fontFamily: '"Poppins", sans-serif',
+                fontWeight: 900,
+                fontSize: { xs: '1.1rem', sm: '1.3rem', md: '1.5rem' },
+                color: '#FFFFFF',
+                letterSpacing: '0.04em',
+                textTransform: 'uppercase',
+                mb: 0.5,
+              }}
+            >
+              ADMISSIONS OPEN
+            </Typography>
 
-                <Typography
-                  variant="h2"
-                  sx={{
-                    fontSize: { xs: '1.8rem', sm: '2.5rem', md: '3rem' },
-                    fontWeight: 900,
-                    lineHeight: 1.15,
-                    mb: 1.5,
-                    color: '#FFFFFF',
-                  }}
-                >
-                  Book Your Free Demo Class Today!
-                </Typography>
+            <Typography
+              variant="h3"
+              sx={{
+                fontFamily: '"Poppins", sans-serif',
+                fontSize: { xs: '1.4rem', sm: '1.8rem', md: '2rem' },
+                fontWeight: 800,
+                lineHeight: 1.2,
+                mb: 1,
+                color: '#FFFFFF',
+              }}
+            >
+              Book Your Free Demo Class Today!
+            </Typography>
 
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontSize: { xs: '0.95rem', sm: '1.1rem' },
-                    color: 'rgba(255, 255, 255, 0.9)',
-                    mb: 3.5,
-                    lineHeight: 1.5,
-                  }}
-                >
-                  Give your child the right start. Enroll now for a better tomorrow.
-                </Typography>
+            <Typography
+              variant="body2"
+              sx={{
+                fontSize: { xs: '0.85rem', sm: '0.92rem' },
+                color: 'rgba(255, 255, 255, 0.88)',
+                mb: 2.5,
+                lineHeight: 1.5,
+              }}
+            >
+              Give your child the right start. Enroll now for a better tomorrow.
+            </Typography>
 
-                <Button
-                  variant="contained"
-                  size="large"
-                  endIcon={<ArrowForwardIcon sx={{ color: '#1E9457' }} />}
-                  onClick={handleEnroll}
-                  sx={{
-                    backgroundColor: '#FFFFFF',
-                    color: '#1E9457',
-                    fontWeight: 800,
-                    fontSize: '1rem',
-                    borderRadius: '30px',
-                    px: 4,
-                    py: 1.5,
-                    boxShadow: '0 6px 20px rgba(0, 0, 0, 0.15)',
-                    '&:hover': {
-                      backgroundColor: '#F8F9FB',
-                      color: '#14673B',
-                      transform: 'translateY(-2px)',
-                    },
-                  }}
-                >
-                  Enroll Now
-                </Button>
-              </Box>
-            </Grid>
+            <Button
+              variant="outlined"
+              size="medium"
+              endIcon={<ArrowForwardIcon />}
+              onClick={handleEnroll}
+              sx={{
+                backgroundColor: 'transparent',
+                color: '#FFFFFF',
+                borderColor: '#FFFFFF',
+                fontWeight: 700,
+                fontSize: '0.88rem',
+                borderRadius: '12px',
+                px: 3,
+                py: 1,
+                textTransform: 'none',
+                '&:hover': {
+                  backgroundColor: '#FFFFFF',
+                  color: '#1E9457',
+                  borderColor: '#FFFFFF',
+                },
+              }}
+            >
+              Enroll Now
+            </Button>
+          </Box>
 
-            {/* Right Kid Circular Image */}
-            <Grid item xs={12} md={4}>
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: { xs: 'center', md: 'flex-end' },
-                  alignItems: 'center',
-                }}
-              >
-                <Box
-                  component="img"
-                  src={admissionsKidImg}
-                  alt="Cheerful student with backpack"
-                  sx={{
-                    width: { xs: 180, sm: 220, md: 260 },
-                    height: { xs: 180, sm: 220, md: 260 },
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                    border: '6px solid rgba(255, 255, 255, 0.35)',
-                    boxShadow: '0 12px 30px rgba(0, 0, 0, 0.2)',
-                  }}
-                />
-              </Box>
-            </Grid>
-          </Grid>
+          {/* Right Kid Image */}
+          <Box
+            sx={{
+              display: { xs: 'none', md: 'block' },
+              position: 'relative',
+              flexShrink: 0,
+              width: { md: 200, lg: 240 },
+              height: { md: 180, lg: 200 },
+              mr: { md: 4, lg: 6 },
+              alignSelf: 'flex-end',
+            }}
+          >
+            <Box
+              component="img"
+              src={admissionsKidImg}
+              alt="Cheerful student with backpack"
+              sx={{
+                position: 'absolute',
+                bottom: 0,
+                right: 0,
+                width: '100%',
+                height: 'auto',
+                maxHeight: { md: 210, lg: 240 },
+                objectFit: 'contain',
+                objectPosition: 'bottom',
+              }}
+            />
+          </Box>
         </Box>
       </Container>
     </Box>

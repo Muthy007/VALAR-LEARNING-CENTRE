@@ -146,17 +146,15 @@ export default function Stats() {
       sx={{
         backgroundColor: '#101B33',
         color: '#FFFFFF',
-        py: { xs: 3, sm: 4, md: 4.5 },
-        px: { xs: 2, sm: 4, md: 6, lg: 10 },
+        py: { xs: 3.5, sm: 4, md: 4.5 },
+        px: { xs: 3, sm: 4, md: 6, lg: 10 },
       }}
     >
       <Box
         sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          gap: { xs: 3, sm: 2 },
+          display: 'grid',
+          gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
+          gap: { xs: 3, sm: 3, md: 2 },
         }}
       >
         {statsData.map((stat, idx) => (

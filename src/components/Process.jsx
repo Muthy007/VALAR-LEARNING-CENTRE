@@ -3,7 +3,6 @@ import {
   Box,
   Container,
   Typography,
-  Grid,
   useTheme,
   useMediaQuery,
 } from '@mui/material';
@@ -99,90 +98,94 @@ export default function Process() {
             <Box
               sx={{
                 position: 'absolute',
-                top: 34,
-                left: '8%',
-                right: '8%',
-                height: 2,
-                borderTop: '2px dashed #1E9457',
+                top: 36,
+                left: '8.33%',
+                right: '8.33%',
+                height: 0,
+                borderTop: '3px dashed rgba(30, 148, 87, 0.45)',
                 zIndex: 0,
-                opacity: 0.4,
               }}
             />
           )}
 
-          <Grid container spacing={{ xs: 2.5, sm: 3, md: 2 }} alignItems="flex-start">
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', md: 'repeat(6, 1fr)' },
+              gap: { xs: 3, sm: 3, md: 2 },
+            }}
+          >
             {stepsData.map((step, idx) => {
               const Icon = step.icon;
               return (
-                <Grid item xs={6} sm={4} md={2} key={idx}>
+                <Box
+                  key={idx}
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    position: 'relative',
+                    zIndex: 1,
+                  }}
+                >
+                  {/* Double Ring Circle Icon Badge */}
                   <Box
                     sx={{
+                      width: { xs: 60, sm: 68 },
+                      height: { xs: 60, sm: 68 },
+                      borderRadius: '50%',
+                      backgroundColor: '#FFFFFF',
+                      border: '2px solid #1E9457',
+                      outline: '4px solid rgba(30, 148, 87, 0.1)',
+                      color: '#1E9457',
                       display: 'flex',
-                      flexDirection: 'column',
                       alignItems: 'center',
-                      textAlign: 'center',
-                      position: 'relative',
-                      zIndex: 1,
+                      justifyContent: 'center',
+                      boxShadow: '0 6px 18px rgba(30, 148, 87, 0.12)',
+                      mb: 1.8,
+                      transition: 'all 0.3s ease-in-out',
+                      '&:hover': {
+                        backgroundColor: '#1E9457',
+                        color: '#FFFFFF',
+                        transform: 'scale(1.08)',
+                        outline: '6px solid rgba(30, 148, 87, 0.2)',
+                      },
                     }}
                   >
-                    {/* Double Ring Circle Icon Badge */}
-                    <Box
-                      sx={{
-                        width: { xs: 60, sm: 68 },
-                        height: { xs: 60, sm: 68 },
-                        borderRadius: '50%',
-                        backgroundColor: '#FFFFFF',
-                        border: '2px solid #1E9457',
-                        outline: '4px solid rgba(30, 148, 87, 0.1)',
-                        color: '#1E9457',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        boxShadow: '0 6px 18px rgba(30, 148, 87, 0.12)',
-                        mb: 1.8,
-                        transition: 'all 0.3s ease-in-out',
-                        '&:hover': {
-                          backgroundColor: '#1E9457',
-                          color: '#FFFFFF',
-                          transform: 'scale(1.08)',
-                          outline: '6px solid rgba(30, 148, 87, 0.2)',
-                        },
-                      }}
-                    >
-                      <Icon sx={{ fontSize: { xs: 26, sm: 30 } }} />
-                    </Box>
-
-                    {/* Title */}
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontSize: { xs: '0.88rem', sm: '0.95rem' },
-                        fontWeight: 800,
-                        color: '#101B33',
-                        mb: 0.6,
-                        lineHeight: 1.25,
-                      }}
-                    >
-                      {step.title}
-                    </Typography>
-
-                    {/* Description */}
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        fontSize: { xs: '0.74rem', sm: '0.78rem' },
-                        color: '#4A5568',
-                        lineHeight: 1.35,
-                        maxWidth: 170,
-                      }}
-                    >
-                      {step.desc}
-                    </Typography>
+                    <Icon sx={{ fontSize: { xs: 26, sm: 30 } }} />
                   </Box>
-                </Grid>
+
+                  {/* Title */}
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontSize: { xs: '0.88rem', sm: '0.95rem' },
+                      fontWeight: 800,
+                      color: '#101B33',
+                      mb: 0.6,
+                      lineHeight: 1.25,
+                    }}
+                  >
+                    {step.title}
+                  </Typography>
+
+                  {/* Description */}
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontSize: { xs: '0.74rem', sm: '0.78rem' },
+                      color: '#4A5568',
+                      lineHeight: 1.35,
+                      maxWidth: 170,
+                    }}
+                  >
+                    {step.desc}
+                  </Typography>
+                </Box>
               );
             })}
-          </Grid>
+          </Box>
         </Box>
       </Container>
     </Box>

@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Box,
   Container,
-  Grid,
   Typography,
   IconButton,
   Link as MuiLink,
@@ -42,21 +41,32 @@ export default function Footer() {
       sx={{
         backgroundColor: '#101B33',
         color: '#FFFFFF',
-        pt: { xs: 8, md: 10 },
-        pb: 4,
+        pt: { xs: 6, md: 7 },
+        pb: 3,
         position: 'relative',
       }}
     >
       <Container maxWidth="xl">
-        <Grid container spacing={{ xs: 4, md: 5, lg: 6 }}>
-          {/* Column 1: Logo & Social */}
-          <Grid item xs={12} sm={6} md={3.5}>
-            <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1.5 }}>
+        {/* Main Footer Grid - 5 columns on desktop */}
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: {
+              xs: 'repeat(2, 1fr)',
+              sm: 'repeat(2, 1fr)',
+              md: '2.5fr 1.2fr 1.5fr 2.2fr 1fr',
+            },
+            gap: { xs: 3, sm: 3, md: 4 },
+          }}
+        >
+          {/* Column 1: Logo & Tagline & Social */}
+          <Box sx={{ gridColumn: { xs: '1 / -1', sm: '1 / -1', md: '1 / 2' } }}>
+            <Box sx={{ mb: 1.5, display: 'flex', alignItems: 'center', gap: 1.2 }}>
               <Box
                 sx={{
-                  width: 42,
-                  height: 42,
-                  borderRadius: '12px',
+                  width: 38,
+                  height: 38,
+                  borderRadius: '10px',
                   backgroundColor: '#FFFFFF',
                   color: '#101B33',
                   display: 'flex',
@@ -64,31 +74,34 @@ export default function Footer() {
                   justifyContent: 'center',
                 }}
               >
-                <MenuBookIcon sx={{ fontSize: 24 }} />
+                <MenuBookIcon sx={{ fontSize: 22 }} />
               </Box>
               <Box>
                 <Typography
                   variant="h6"
                   sx={{
-                    fontFamily: '"Poppins", "Baloo 2", sans-serif',
+                    fontFamily: '"Poppins", sans-serif',
                     fontWeight: 800,
                     color: '#FFFFFF',
-                    fontSize: '1.2rem',
+                    fontSize: '1.05rem',
                     lineHeight: 1.05,
+                    letterSpacing: '0.05em',
                   }}
                 >
-                  VALAR LEARNING CENTRE
+                  VALAR
                 </Typography>
                 <Typography
                   variant="caption"
                   sx={{
                     color: '#1E9457',
                     fontWeight: 700,
-                    fontSize: '0.66rem',
-                    letterSpacing: '0.1em',
+                    fontSize: '0.6rem',
+                    letterSpacing: '0.12em',
+                    display: 'block',
+                    lineHeight: 1,
                   }}
                 >
-                  IMAGINE • LEARN • SOAR
+                  LEARNING CENTRE
                 </Typography>
               </Box>
             </Box>
@@ -96,18 +109,18 @@ export default function Footer() {
             <Typography
               variant="body2"
               sx={{
-                color: 'rgba(255, 255, 255, 0.75)',
-                fontSize: '0.9rem',
-                lineHeight: 1.6,
-                mb: 3,
-                maxWidth: 320,
+                color: 'rgba(255, 255, 255, 0.7)',
+                fontSize: '0.82rem',
+                lineHeight: 1.55,
+                mb: 2,
+                maxWidth: 280,
               }}
             >
-              Nurturing young minds through concept-based learning, personal attention and holistic development in Poonamallee, Chennai.
+              Nurturing minds through concept based learning, personal attention and holistic development.
             </Typography>
 
             {/* Social Icons */}
-            <Box sx={{ display: 'flex', gap: 1.2 }}>
+            <Box sx={{ display: 'flex', gap: 1 }}>
               {[
                 { icon: FacebookIcon, href: '#' },
                 { icon: InstagramIcon, href: '#' },
@@ -121,37 +134,40 @@ export default function Footer() {
                     component="a"
                     href={soc.href}
                     target="_blank"
+                    size="small"
                     sx={{
                       backgroundColor: 'rgba(255, 255, 255, 0.08)',
                       color: '#FFFFFF',
+                      width: 34,
+                      height: 34,
                       '&:hover': {
                         backgroundColor: '#1E9457',
                         transform: 'translateY(-2px)',
                       },
                     }}
                   >
-                    <Icon fontSize="small" />
+                    <Icon sx={{ fontSize: 18 }} />
                   </IconButton>
                 );
               })}
             </Box>
-          </Grid>
+          </Box>
 
           {/* Column 2: Quick Links */}
-          <Grid item xs={6} sm={3} md={2}>
+          <Box>
             <Typography
               variant="h6"
               sx={{
                 fontWeight: 800,
-                fontSize: '1.05rem',
-                mb: 2.5,
+                fontSize: '0.92rem',
+                mb: 2,
                 color: '#FFFFFF',
-                letterSpacing: '0.02em',
+                letterSpacing: '0.03em',
               }}
             >
               QUICK LINKS
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.2 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
               {[
                 { label: 'Home', href: '#hero' },
                 { label: 'About Us', href: '#about' },
@@ -166,8 +182,8 @@ export default function Footer() {
                   underline="none"
                   onClick={() => handleScrollTo(link.href)}
                   sx={{
-                    color: 'rgba(255, 255, 255, 0.75)',
-                    fontSize: '0.9rem',
+                    color: 'rgba(255, 255, 255, 0.7)',
+                    fontSize: '0.82rem',
                     fontWeight: 500,
                     cursor: 'pointer',
                     transition: 'color 0.2s',
@@ -178,27 +194,27 @@ export default function Footer() {
                 </MuiLink>
               ))}
             </Box>
-          </Grid>
+          </Box>
 
           {/* Column 3: Our Courses */}
-          <Grid item xs={6} sm={3} md={2.5}>
+          <Box>
             <Typography
               variant="h6"
               sx={{
                 fontWeight: 800,
-                fontSize: '1.05rem',
-                mb: 2.5,
+                fontSize: '0.92rem',
+                mb: 2,
                 color: '#FFFFFF',
-                letterSpacing: '0.02em',
+                letterSpacing: '0.03em',
               }}
             >
               OUR COURSES
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.2 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
               {[
-                'Tuition (LKG - XII)',
+                'Tuition',
                 'Abacus',
-                'Phonics (English & Tamil)',
+                'Phonics',
                 'Hand Writing',
                 'Drawing Classes',
                 'Yoga (Women Only)',
@@ -208,8 +224,8 @@ export default function Footer() {
                   underline="none"
                   onClick={() => handleScrollTo('#courses')}
                   sx={{
-                    color: 'rgba(255, 255, 255, 0.75)',
-                    fontSize: '0.9rem',
+                    color: 'rgba(255, 255, 255, 0.7)',
+                    fontSize: '0.82rem',
                     fontWeight: 500,
                     cursor: 'pointer',
                     transition: 'color 0.2s',
@@ -220,93 +236,95 @@ export default function Footer() {
                 </MuiLink>
               ))}
             </Box>
-          </Grid>
+          </Box>
 
-          {/* Column 4: Contact Us & QR Code */}
-          <Grid item xs={12} sm={12} md={4}>
+          {/* Column 4: Contact Us */}
+          <Box>
             <Typography
               variant="h6"
               sx={{
                 fontWeight: 800,
-                fontSize: '1.05rem',
-                mb: 2.5,
+                fontSize: '0.92rem',
+                mb: 2,
                 color: '#FFFFFF',
-                letterSpacing: '0.02em',
+                letterSpacing: '0.03em',
               }}
             >
               CONTACT US
             </Typography>
 
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.8, mb: 3 }}>
-              <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.5 }}>
-                <LocationOnOutlinedIcon sx={{ color: '#1E9457', mt: 0.2, fontSize: 20 }} />
-                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.88rem', lineHeight: 1.45 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+              <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.2 }}>
+                <LocationOnOutlinedIcon sx={{ color: '#1E9457', mt: 0.2, fontSize: 18 }} />
+                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '0.8rem', lineHeight: 1.45 }}>
                   7/46, First floor, Vaniyar Street, Near Meenu Apartment, Senneerkuppam, Poonamallee, Chennai - 600056
                 </Typography>
               </Box>
 
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                <PhoneInTalkOutlinedIcon sx={{ color: '#1E9457', fontSize: 20 }} />
-                <MuiLink href="tel:+919150281166" underline="none" sx={{ color: 'rgba(255, 255, 255, 0.9)', fontWeight: 700, fontSize: '0.92rem' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.2 }}>
+                <PhoneInTalkOutlinedIcon sx={{ color: '#1E9457', fontSize: 18 }} />
+                <MuiLink href="tel:+919150281166" underline="none" sx={{ color: 'rgba(255, 255, 255, 0.85)', fontWeight: 600, fontSize: '0.82rem' }}>
                   +91 91502 81166
                 </MuiLink>
               </Box>
 
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                <EmailOutlinedIcon sx={{ color: '#1E9457', fontSize: 20 }} />
-                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.88rem' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.2 }}>
+                <EmailOutlinedIcon sx={{ color: '#1E9457', fontSize: 18 }} />
+                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '0.8rem' }}>
                   info@valarlearningcenter.com
                 </Typography>
               </Box>
 
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                <LanguageOutlinedIcon sx={{ color: '#1E9457', fontSize: 20 }} />
-                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.88rem' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.2 }}>
+                <LanguageOutlinedIcon sx={{ color: '#1E9457', fontSize: 18 }} />
+                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '0.8rem' }}>
                   www.valarlearningcenter.com
                 </Typography>
               </Box>
             </Box>
+          </Box>
 
-            {/* QR Code Box */}
+          {/* Column 5: Scan to Location QR */}
+          <Box
+            sx={{
+              display: { xs: 'none', md: 'flex' },
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              pt: 4,
+            }}
+          >
             <Box
               sx={{
-                display: 'inline-flex',
+                width: 80,
+                height: 80,
+                backgroundColor: '#FFFFFF',
+                borderRadius: '14px',
+                display: 'flex',
                 alignItems: 'center',
-                gap: 1.8,
-                p: 1.5,
-                px: 2,
-                borderRadius: '16px',
-                backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
+                justifyContent: 'center',
+                color: '#101B33',
+                mb: 1,
               }}
             >
-              <Box
-                sx={{
-                  width: 50,
-                  height: 50,
-                  backgroundColor: '#FFFFFF',
-                  borderRadius: '10px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#101B33',
-                }}
-              >
-                <QrCode2Icon sx={{ fontSize: 38 }} />
-              </Box>
-              <Box>
-                <Typography variant="caption" sx={{ fontWeight: 800, color: '#FFFFFF', display: 'block', fontSize: '0.82rem' }}>
-                  Scan for Location
-                </Typography>
-                <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.65)', fontSize: '0.72rem' }}>
-                  Poonamallee Branch Map
-                </Typography>
-              </Box>
+              <QrCode2Icon sx={{ fontSize: 60 }} />
             </Box>
-          </Grid>
-        </Grid>
+            <Typography
+              variant="caption"
+              sx={{
+                fontWeight: 700,
+                color: 'rgba(255, 255, 255, 0.85)',
+                fontSize: '0.72rem',
+                textAlign: 'center',
+                lineHeight: 1.3,
+              }}
+            >
+              Scan to<br />Location
+            </Typography>
+          </Box>
+        </Box>
 
-        <Divider sx={{ my: 4, borderColor: 'rgba(255, 255, 255, 0.1)' }} />
+        <Divider sx={{ my: 3, borderColor: 'rgba(255, 255, 255, 0.08)' }} />
 
         {/* Bottom copyright & legal */}
         <Box
@@ -315,37 +333,33 @@ export default function Footer() {
             justifyContent: 'space-between',
             alignItems: 'center',
             flexWrap: 'wrap',
-            gap: 2,
+            gap: 1.5,
           }}
         >
-          <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.65)', fontSize: '0.82rem' }}>
+          <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.55)', fontSize: '0.78rem' }}>
             © 2025 VALAR Learning Centre. All Rights Reserved.
           </Typography>
-          <Box sx={{ display: 'flex', gap: 3 }}>
-            <MuiLink underline="none" href="#" sx={{ color: 'rgba(255, 255, 255, 0.65)', fontSize: '0.82rem', '&:hover': { color: '#1E9457' } }}>
+          <Box sx={{ display: 'flex', gap: 2.5 }}>
+            <MuiLink underline="none" href="#" sx={{ color: 'rgba(255, 255, 255, 0.55)', fontSize: '0.78rem', '&:hover': { color: '#1E9457' } }}>
               Privacy Policy
             </MuiLink>
-            <MuiLink underline="none" href="#" sx={{ color: 'rgba(255, 255, 255, 0.65)', fontSize: '0.82rem', '&:hover': { color: '#1E9457' } }}>
+            <MuiLink underline="none" href="#" sx={{ color: 'rgba(255, 255, 255, 0.55)', fontSize: '0.78rem', '&:hover': { color: '#1E9457' } }}>
               Terms & Conditions
             </MuiLink>
           </Box>
         </Box>
       </Container>
 
-      {/* Floating Action Buttons at bottom right */}
+      {/* Floating WhatsApp FAB */}
       <Box
         sx={{
           position: 'fixed',
           bottom: 24,
           right: 24,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 1.5,
           zIndex: 1200,
         }}
       >
         <Fab
-          color="secondary"
           size="medium"
           component="a"
           href="https://wa.me/919150281166"
